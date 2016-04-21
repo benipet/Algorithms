@@ -1,0 +1,61 @@
+The Block Problem Programming Implementation
+==============================================
+
+	Contents
+	1. Block Management
+	2. Block Manipulation
+	3. Block system implementation
+	
+
+1. Block Management
+	Storing and Moving the blocks in the computer memory
+	
+	Propeties of a block:
+	1. Index id 
+	2. itself position    //The block of itself
+	3. bottom block       //The address of bottom block
+	4. above block	      //The address of above block
+
+	Rule of the blocks
+	1. If the block no have bottom address the block is on itself position
+	2. If the block no have above block the block is the top of on the stack
+	3. If the block have both: bottom and above -> the block is member of a stack
+
+	Block Functions:
+	-init_block   			//initizalize a block in the memory
+	-link_block   			//link a block as above block
+	(-append_block 			//set the bottom address to the appended block)
+	-reset_block  			//reset the bottom block to NULL
+	-get_blockById			//returns the block itself position
+	-is_top				//returns 0 if no 1 if yes
+
+	Stack Functions (the stack is piled blocks):
+	-define_stackById: 		//Returns the last block position of a given blockId
+	-remove_stackById:		//Remove a stack by block id. The new position of the stack is the given block Id.
+	-move_stack:			//Move a stack onto the given stack
+				
+
+2. Block Manipulation
+	How to manipulate the Block moving by user command by standard input.
+	(?)
+
+
+3. Block System Implementation
+	Implement the block system with Block Manipulated and Block Management. And display it 
+	on the standard input.
+
+	Init Functions:
+	init_blockSystem		//Initialize the blocks with the given int number
+
+	Move Functions:
+	move_onto			
+		
+	move_over
+	
+	Pile Functions:
+	pile_onto
+	pile_over
+
+	
+	
+	

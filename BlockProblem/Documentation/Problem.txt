@@ -1,0 +1,82 @@
+
+	The Block Problem
+
+	21/04/2016		
+	Programmer: Peter Benis
+	
+======================================================================================
+
+	The Problem
+
+Initially:
+	- Given n block on the table (numbered 0 to n-1)
+	- bi  where 0 <= i < n-1
+
+
+Commands:
+	* move a onto b -> puts block 'a' onto 'b'. After returning any blocks that are stacked on top of blocks their init position.
+	* move a over b -> puts block 'a' onto stack containg 'b'. after returning 'a' blocks to their initial positions.
+	* pile a onto b -> moves the pile of blocks 'a' onto block 'b'. All blocks on 'b' returning to their initial positions.
+	* pile a over b -> puts the pile of block 'a' onto the top of stack contaning block b.
+	* quit
+
+a = b illegal (a and b are the same stack of blocks)
+Illegal commands: should be ignored and should have no affect on the configuration of blocks
+
+
+
+**INPUT**
+
+	1. n integer -> number of blocks in the block world (0 < n < 25)
+	2. Following the sequences of block commands, one command per line
+	3. Terminate the sequence with the 'quit' command
+	4. Check the commands with syntactctically and correct as above mentioned
+
+Sample:
+10
+move 9 onto 1
+move 8 over 1
+move 7 over 1
+move 6 over 1
+pile 8 over 6
+pile 8 over 5
+move 2 over 1
+move 4 over 9
+quit
+
+**OUTPUT**
+
+	* Each original block position numbered i(0<=i<n where n is the number of blocks)
+	* block position followed by a colon ':'
+	* the colon must be followed by space
+	* each block number separated by space
+
+Sample:
+0: 0
+1: 1 9 2 4
+2: 
+3: 3
+4: 
+5: 5 8 7 6
+6:
+7:
+8:
+9:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

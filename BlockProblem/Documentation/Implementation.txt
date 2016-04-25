@@ -1,0 +1,131 @@
+Datatypes
+-----------
+
+	Name		Type		Description
+--------------------------------------------------------------------
+	pos		struct		position structure
+	blck		struct		block structure
+	stck		struct		stack structure
+
+	pos.index	unsigned int	index number of the position
+	pos.addr_tbl	pos*		address of the first position(table)
+	pos.addr_next	pos*		address of the next position	
+	pos.blck_addr	blck*		address of the block on position
+
+	blck.index	unsigned int	index of the block
+	blck.base	pos*		address of the HOME of block
+	blck.next	blck*		address of the next block
+	blck.prev	blck*		address of the prev block
+	blck.pos	pos*		address of the block current position
+	
+	stck.block	unsigned int	index of the block
+	stck.pos	unsigned int	index of the position
+	stck.size	unsigned int	size of the stack from block
+	stck.pblock	blck*		address of the block position
+	stck.ppos	pos*		address of the position
+
+Functions
+----------
+
+--------------------------------------------------------------------------------
+			POSITION FUNCTIONS
+--------------------------------------------------------------------------------
+Prototype: pos* init_table(void)
+Description: Allocate a table with position 0. And Initialize a block on its base.
+Parameters: void
+Returns value: address of table
+--------------------------------------------------------------------------------
+
+Prototype: void add_position(pos* table)
+Description:Allocate a new position and attach it to the last member of the table position. Also initialize a block on its base.
+Parameters: pointer to the table
+Returns value: void 
+--------------------------------------------------------------------------------
+			BLOCK FUNCTIONS
+--------------------------------------------------------------------------------
+
+Prototype:blck* init_block(void)
+Description:Allocate a block structure in the memory
+Parameters: void
+Returns value: block pointer
+--------------------------------------------------------------------------------
+Prototype:void deall_block(blck* block)
+Description:
+	1. Assign the parent node next_node 0
+	2. deallocate the given block
+Parameters: pointer to the block
+Returns value:void
+--------------------------------------------------------------------------------
+Prototype: void copy_block(blck* origin, blck* dest)
+Description: Copy and update the origin block parameters into the dest block parameters.
+	//Copied parameters: index, base position, next block position
+	//Updated Parameters: prev block position (0 if base), current position
+Parameters: pointer to the origin block, pointer to the destination block
+Returns value: void
+--------------------------------------------------------------------------------
+			STACK FUNCTIONS
+--------------------------------------------------------------------------------
+
+Prototype: stck* init_stack(void)
+Description: Allocate a stack in the memory
+Parameters: void
+Returns value: Pointer to the stack
+
+--------------------------------------------------------------------------------
+Prototype:void kill_stack(stck* stack);
+Description:Deallocate a stack from the memory
+Parameters:stack pointer
+Returns value:void
+--------------------------------------------------------------------------------
+Prototype:stck* define_stack(pos* table, int index)
+Description:Find the block and define the block of stack.
+	//1. Initialize one stack: wanted
+		->stck.block=index
+	//2. Initialize an other stack: Instances
+	//3. Create Instances with the positions and blocks
+	//4. compare the indexes and if match with the wanted stack
+	//5. return the wanted stack	
+	//6. display on the screen if no matched stack
+Parameters: table pointer, wanted index
+Returns value: wanted stack
+--------------------------------------------------------------------------------
+Prototype:stck* update_stack(pos* position, int index)
+Description: 
+	//Call the define_stack just with the position parameter
+	
+Parameters: position, and the block index
+Returns value: new stack
+--------------------------------------------------------------------------------
+Prototype: int cmp_stack(blck* a, blck* b)
+Description: Compare a and b block is on same stack or not
+	//1. Define stack with a->index
+	//2. Define stack with b->index
+	//3. Compare the a->pos and b->pos if same -> same stack
+	//4. Display on the std.output if same
+Parameters:block of a and block of b indexes
+Returns value:
+	1 if on same
+	0 if different
+--------------------------------------------------------------------------------
+Prototype: void demolish_stack(int blockIndex)
+Description: Demolish the stack on the given block Index
+	//call define_stack with the block Index
+	//The function is work if the size > 0
+	//The function returns 0 if the stack is demolised
+	//The function returns 0 if the given block doesn't contain stack
+	//If the size > 0 then
+Parameters:
+Returns value:
+--------------------------------------------------------------------------------
+
+Prototype:
+Description:
+Parameters:
+Returns value:
+--------------------------------------------------------------------------------
+
+
+
+
+
+

@@ -10,12 +10,12 @@ Datatypes
 	pos.index	unsigned int	index number of the position
 	pos.addr_tbl	pos*		address of the first position(table)
 	pos.addr_next	pos*		address of the next position	
-	pos.blck_addr	blck*		address of the block on position
+	pos.addr_blck	blck*		address of the block on position
 
 	blck.index	unsigned int	index of the block
 	blck.base	pos*		address of the HOME of block
-	blck.next	blck*		address of the next block
-	blck.prev	blck*		address of the prev block
+	blck.above	blck*		address of the next block
+	blck.bottom	blck*		address of the prev block
 	blck.pos	pos*		address of the block current position
 	
 	stck.block	unsigned int	index of the block
@@ -36,7 +36,7 @@ Parameters: void
 Returns value: address of table
 --------------------------------------------------------------------------------
 
-Prototype: void add_position(pos* table)
+Prototype: void build_position(pos* table, int size)
 Description:Allocate a new position and attach it to the last member of the table position. Also initialize a block on its base.
 Parameters: pointer to the table
 Returns value: void 
@@ -58,7 +58,7 @@ Description: Sets the block.next_block with the received address.
 Parameters: pointer to the new above block
 Returns value: status
 --------------------------------------------------------------------------------
-Prototype: int ulink_block(void)
+Prototype: int ulink_block(blck* a_block, blck* b_block)
 Description: The function sets the above address 0 if not. 
 	//The function returns 0 if the unlinking is success 
 	//and 1 if not (if the above address is exists)	

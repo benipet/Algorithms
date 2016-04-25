@@ -9,7 +9,7 @@ typedef struct 	_blckNode blck;
 //Init Table
 pos* init_table(void);
 //Init Position
-pos* init_position(void);
+pos* init_position(pos* table);
 //Init BlockNode on PositionNode
 blck* init_block(pos* home);
 

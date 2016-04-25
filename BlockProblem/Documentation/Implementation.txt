@@ -44,24 +44,45 @@ Returns value: void
 			BLOCK FUNCTIONS
 --------------------------------------------------------------------------------
 
-Prototype:blck* init_block(void)
-Description:Allocate a block structure in the memory
+Prototype:blck* init_block(pos* base)
+Description:Allocate a block structure in the memory, and sets the base address. The position address is the base. The block returns the itself address.
 Parameters: void
 Returns value: block pointer
 --------------------------------------------------------------------------------
-Prototype:void deall_block(blck* block)
-Description:
-	1. Assign the parent node next_node 0
-	2. deallocate the given block
-Parameters: pointer to the block
-Returns value:void
+Prototype: int link_block(blck* above)
+Description: Sets the block.next_block with the received address. 
+	//The function checks, the above link is assigned or not
+	//If the above link is busy: print out: sorry I am busy and returns 0
+	//If not not assigned: sets the link with the received address
+	//And sets the position address
+Parameters: pointer to the new above block
+Returns value: status
 --------------------------------------------------------------------------------
-Prototype: void copy_block(blck* origin, blck* dest)
-Description: Copy and update the origin block parameters into the dest block parameters.
-	//Copied parameters: index, base position, next block position
-	//Updated Parameters: prev block position (0 if base), current position
-Parameters: pointer to the origin block, pointer to the destination block
-Returns value: void
+Prototype: int ulink_block(void)
+Description: The function sets the above address 0 if not. 
+	//The function returns 0 if the unlinking is success 
+	//and 1 if not (if the above address is exists)	
+Parameters: void
+Returns value: integer status
+
+--------------------------------------------------------------------------------
+
+Prototype: int get_blpos(blck* block, int OPTION);
+Description: Returns the current position index
+Parameters: the block address
+Returns value: returns an integer number, or pos_address
+
+--------------------------------------------------------------------------------
+
+Prototype: int get_base(blck* block, int OPTION)
+Description: Returns the base number or base address
+Parameters: block address
+Returns value: integer, or pointer
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+
 --------------------------------------------------------------------------------
 			STACK FUNCTIONS
 --------------------------------------------------------------------------------

@@ -26,7 +26,7 @@ struct _stack{
 	
 };
 
-/*Function prototypes*/
+/*Function definitions*/
 pos* init_table(void){
 	pos* table = (pos*)malloc(sizeof(pos));
 	table->index=0;
@@ -37,7 +37,7 @@ pos* init_table(void){
 	return table;
 	}
 
-pos* build_positions(pos* table, int size){
+pos* build_positions(posc* table, int size){
 	int counter = 1;
 	pos* old=table;
 	for(counter; counter<=size;counter++){
@@ -81,5 +81,20 @@ blck* ulink_block(blck* leaver){
 	leaver->bottom=0;
 	leaver->pos=leaver->base;
 }	/*bottom block and aboce block*/
-pos* get_blpos(blck* block);			/*Returns the position addr. block*/
-pos* get_base(blck* block);			/*Returns the base position addr.*/
+
+/*
+	STACK FUNCTION DEFINITIONS
+*/
+
+stck* init_stack(void){
+	stck* new_stack = (stck*)malloc(sizeof(stck));
+	return new_stack;
+}
+void kill_stack(stck* stack){
+	free(stack)
+}
+stck* define_stack(pos* table, int bl_index){
+	
+}
+stck* cmp_stack(pos* table, int a_index, int b_index);
+stck* demolish_stack(pos* table, int bl_index);

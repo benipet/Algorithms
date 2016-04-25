@@ -23,4 +23,11 @@ blck* ulink_block(blck* leaver);		/*bottom block and aboce block*/
 pos* get_blpos(blck* block);			/*Returns the position addr. block*/
 pos* get_base(blck* block);			/*Returns the base position addr.*/
 
+stck* init_stack(void);
+void kill_stack(stck* stack);
+stck* define_stack(pos* table, int bl_index);
+stck* cmp_stack(pos* table, int a_index, int b_index);
+stck* demolish_stack(pos* table, int bl_index);
+
+
 

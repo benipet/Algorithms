@@ -21,8 +21,7 @@ Datatypes
 	stck.block	unsigned int	index of the block
 	stck.pos	unsigned int	index of the position
 	stck.size	unsigned int	size of the stack from block
-	stck.pblock	blck*		address of the block position
-	stck.ppos	pos*		address of the position
+	
 
 Functions
 ----------
@@ -100,13 +99,7 @@ Returns value:void
 --------------------------------------------------------------------------------
 Prototype:stck* define_stack(pos* table, int index)
 Description:Find the block and define the block of stack.
-	//1. Initialize one stack: wanted
-		->stck.block=index
-	//2. Initialize an other stack: Instances
-	//3. Create Instances with the positions and blocks
-	//4. compare the indexes and if match with the wanted stack
-	//5. return the wanted stack	
-	//6. display on the screen if no matched stack
+	
 Parameters: table pointer, wanted index
 Returns value: wanted stack
 --------------------------------------------------------------------------------
@@ -117,7 +110,7 @@ Description:
 Parameters: position, and the block index
 Returns value: new stack
 --------------------------------------------------------------------------------
-Prototype: int cmp_stack(blck* a, blck* b)
+Prototype: int cmp_stack(pos* table, int a_index, int b_index)
 Description: Compare a and b block is on same stack or not
 	//1. Define stack with a->index
 	//2. Define stack with b->index
@@ -128,13 +121,14 @@ Returns value:
 	1 if on same
 	0 if different
 --------------------------------------------------------------------------------
-Prototype: void demolish_stack(int blockIndex)
+Prototype: void demolish_stack(pos* table, int blockIndex)
 Description: Demolish the stack on the given block Index
-	//call define_stack with the block Index
-	//The function is work if the size > 0
-	//The function returns 0 if the stack is demolised
-	//The function returns 0 if the given block doesn't contain stack
-	//If the size > 0 then
+	//Define a stack on the given parameters
+	//blck* dem = block_addr->above (where size > 0)
+	//while (dem->addr_above!=0)
+	unlink(dem)
+	dem=dem->addr_above 
+	 
 Parameters:
 Returns value:
 --------------------------------------------------------------------------------

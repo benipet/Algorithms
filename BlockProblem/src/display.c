@@ -1,5 +1,16 @@
-#include "node.h"
-#include "node.c"
+#include "display.h"
+
+
+struct _construction{
+	pos* 	base;
+	blck*	boxes;	
+	};
+
+void display_positions(pos* table){
+	constr current;
+	current.base=table;
+	printf("%d: ");
+}
 
 //Display BlockNode
 void display_blockNode(blck* instance){

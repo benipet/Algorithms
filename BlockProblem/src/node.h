@@ -18,9 +18,3 @@ void move_onto(blck* a, blck* b);
 void move_over(blck* a, blck* b);
 void pile_onto(blck* a, blck* b);
 void pile_over(blck* a, blck* b);
-
-//Display BlockNode
-void display_blockNode(blck* instance);
-//Display PositionNode
-void display_positionNode(pos* instance);
-

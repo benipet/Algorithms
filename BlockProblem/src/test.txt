@@ -1,0 +1,89 @@
+The two block is member as same stack
+----------Position-------------
+Position index	:0
+Current Address :0x943c008
+Next Position	:0x943c038
+Block child	:0x943c020
+----------Blocks--------------
+0 
+-----------------------------
+----------Position-------------
+Position index	:1
+Current Address :0x943c038
+Next Position	:0x943c068
+Block child	:0x943c050
+----------Blocks--------------
+1 9 2 4 
+-----------------------------
+----------Position-------------
+Position index	:2
+Current Address :0x943c068
+Next Position	:0x943c098
+Block child	:0x943c080
+----------Blocks--------------
+
+-----------------------------
+----------Position-------------
+Position index	:3
+Current Address :0x943c098
+Next Position	:0x943c0c8
+Block child	:0x943c0b0
+----------Blocks--------------
+3 
+-----------------------------
+----------Position-------------
+Position index	:4
+Current Address :0x943c0c8
+Next Position	:0x943c0f8
+Block child	:0x943c0e0
+----------Blocks--------------
+
+-----------------------------
+----------Position-------------
+Position index	:5
+Current Address :0x943c0f8
+Next Position	:0x943c128
+Block child	:0x943c110
+----------Blocks--------------
+5 8 7 6 
+-----------------------------
+----------Position-------------
+Position index	:6
+Current Address :0x943c128
+Next Position	:0x943c158
+Block child	:0x943c140
+----------Blocks--------------
+
+-----------------------------
+----------Position-------------
+Position index	:7
+Current Address :0x943c158
+Next Position	:0x943c188
+Block child	:0x943c170
+----------Blocks--------------
+
+-----------------------------
+----------Position-------------
+Position index	:8
+Current Address :0x943c188
+Next Position	:0x943c1b8
+Block child	:0x943c1a0
+----------Blocks--------------
+
+-----------------------------
+----------Position-------------
+Position index	:9
+Current Address :0x943c1b8
+Next Position	:0x943c1e8
+Block child	:0x943c1d0
+----------Blocks--------------
+
+-----------------------------
+----------Position-------------
+Position index	:10
+Current Address :0x943c1e8
+Next Position	:(nil)
+Block child	:0x943c200
+----------Blocks--------------
+10 
+-----------------------------

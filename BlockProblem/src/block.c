@@ -21,6 +21,7 @@ struct _stack{
 	unsigned int	b_index;
 	unsigned int	p_index;
 	unsigned int	size;
+	blck*		addr_btop;
 	blck*		addr_block;
 	pos*		addr_pos;
 	
@@ -96,64 +97,87 @@ void kill_stack(stck* stack){
 
 
 stck* define_stack(pos* table, int bl_index){
-	blck* wanted;
+	blck* wanted=0;
+	blck* top=0;
 	int counter=0;
 
-	while(table->index<=bl_index & table->addr_next!=0){
-	if(table->addr_next==0){
-	wanted=0;	
-	}
-	else {
-	wanted=table->addr_block;		
+
+	while(table!=0){
+	if(table->index==bl_index){
+	wanted=table->addr_block;
 	}	
 	table=table->addr_next;
 	}
-	if(wanted!=0){
-	
-	while(wanted->above!=0){
-	++counter;
-	wanted=wanted->above;
+	if(!wanted){
+	printf("The block is not on the system\n");
+	return 0;
 	}
+	else{
+		
+	for(top=wanted;top->above!=0;counter++){
+	top=top->above;	
+	};
+	
 	stck* stack = init_stack();
 	stack->b_index=wanted->index;
 	stack->p_index=wanted->pos->index;
 	stack->size=counter;
 	stack->addr_block=wanted;
+	stack->addr_btop=top;
 	stack->addr_pos=wanted->pos;
+		
 	return stack;
-	}
-	return 0;
+	}	
 
 }
 
 int cmp_stack(pos* table, int a_index, int b_index){
-	if(a_index==b_index){
+//Returns: 1 if same, 0 if different
 	stck* a = define_stack(table, a_index);
 	stck* b = define_stack(table, b_index);
-	int a_pos;
-	int b_pos;
+	if(a==0 || b == 0){
+	if(!a){printf ("The 'a' stack is not defined\n");}
+	if(!b){printf ("The 'b' stack is not defined\n");}	
+	}
+
+	else{
+	int a_pos=a->addr_pos->index;
+	int b_pos=b->addr_pos->index;
 	if(a_pos==b_pos){
+	kill_stack(a);
+	kill_stack(b);	
 	return 1;	
 	}
 	else{
+	kill_stack(a);
+	kill_stack(b);
 	return 0;
 	}}
-	else{
-	return -1;
-	}
-
-
 }
+/**
+	PARAMETERS:
+	->table 
+	->bl_index : what above needs to be demolished
+***********************************************************/
 int demolish_stack(pos* table, int bl_index){
-	stck* trash=define_stack(table, bl_index);
-	blck* block;	
-	while(trash->size!=0){
-	block=trash->addr_block;
-	printf("Trash size: %d\n", trash->size);
-	ulink_block(block);
-	kill_stack(trash);
-	trash=define_stack(table, block->index);
-	printf("Trash size: %d\n", trash->size);
+	stck* trash = define_stack(table, bl_index);	
+	blck* home=0;
+	int homeIndex;
+	int status;
+	
+	if(!trash){
+	printf ("The 'trash' stack is undefined\n");
+	return -1;	
 	}
-	kill_stack(trash);
+	if(trash->size==0){
+	//printf ("The stack is free\n");	
+	return 0;
+	}
+	while(trash->size>0){
+	home = trash->addr_block;
+	ulink_block(home);
+	kill(trash);
+	trash = define_stack(table, home->index);
+	}
+
 }

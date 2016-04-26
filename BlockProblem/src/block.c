@@ -32,12 +32,12 @@ pos* init_table(void){
 	table->index=0;
 	table->addr_table=table;
 	table->addr_next=0;
-	table->addr_block=init_block(table);c
+	table->addr_block=init_block(table);
 	
 	return table;
 	}
 
-pos* build_positions(posc* table, int size){
+pos* build_positions(pos* table, int size){
 	int counter = 1;
 	pos* old=table;
 	for(counter; counter<=size;counter++){
@@ -91,10 +91,69 @@ stck* init_stack(void){
 	return new_stack;
 }
 void kill_stack(stck* stack){
-	free(stack)
+	free(stack);
 }
+
+
 stck* define_stack(pos* table, int bl_index){
+	blck* wanted;
+	int counter=0;
+
+	while(table->index<=bl_index & table->addr_next!=0){
+	if(table->addr_next==0){
+	wanted=0;	
+	}
+	else {
+	wanted=table->addr_block;		
+	}	
+	table=table->addr_next;
+	}
+	if(wanted!=0){
 	
+	while(wanted->above!=0){
+	++counter;
+	wanted=wanted->above;
+	}
+	stck* stack = init_stack();
+	stack->b_index=wanted->index;
+	stack->p_index=wanted->pos->index;
+	stack->size=counter;
+	stack->addr_block=wanted;
+	stack->addr_pos=wanted->pos;
+	return stack;
+	}
+	return 0;
+
 }
-stck* cmp_stack(pos* table, int a_index, int b_index);
-stck* demolish_stack(pos* table, int bl_index);
+
+int cmp_stack(pos* table, int a_index, int b_index){
+	if(a_index==b_index){
+	stck* a = define_stack(table, a_index);
+	stck* b = define_stack(table, b_index);
+	int a_pos;
+	int b_pos;
+	if(a_pos==b_pos){
+	return 1;	
+	}
+	else{
+	return 0;
+	}}
+	else{
+	return -1;
+	}
+
+
+}
+int demolish_stack(pos* table, int bl_index){
+	stck* trash=define_stack(table, bl_index);
+	blck* block;	
+	while(trash->size!=0){
+	block=trash->addr_block;
+	printf("Trash size: %d\n", trash->size);
+	ulink_block(block);
+	kill_stack(trash);
+	trash=define_stack(table, block->index);
+	printf("Trash size: %d\n", trash->size);
+	}
+	kill_stack(trash);
+}

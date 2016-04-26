@@ -1,5 +1,5 @@
-void display_position(pos* node);
-void display_all(pos* table);
+#include "block.c"
+
 
 void display_all(pos* table){
 	while(table!=0){
@@ -11,6 +11,7 @@ void display_all(pos* table){
 void display_position(pos* node){
 	printf("----------Position-------------\n");
 	printf("Position index	:%d\n", node->index);
+	printf("Current Address :%p\n", node);
 	printf("Next Position	:%p\n", node->addr_next);
 	printf("Block child	:%p\n", node->addr_block);
 	printf("----------Blocks--------------\n");
@@ -23,4 +24,14 @@ void display_position(pos* node){
 	printf("\n-----------------------------\n");
 	
 }
+
+void display_stack(stck* instance){
+	printf("===========STACK==================\n");
+	printf("block_index	:%d\n", instance->b_index);
+	printf("position	:%d\n", instance->p_index);
+	printf("size		:%d\n", instance->size);
+	
+}
+
+
 

@@ -26,8 +26,13 @@ pos* get_base(blck* block);			/*Returns the base position addr.*/
 stck* init_stack(void);
 void kill_stack(stck* stack);
 stck* define_stack(pos* table, int bl_index);
-stck* cmp_stack(pos* table, int a_index, int b_index);
-stck* demolish_stack(pos* table, int bl_index);
+int get_stckSize(stck* stack);
+int cmp_stack(pos* table, int a_index, int b_index);
+int demolish_stack(pos* table, int bl_index);
+
+void display_position(pos* node);
+void display_all(pos* table);
+
 
 
 
